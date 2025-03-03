@@ -123,13 +123,8 @@
         </footer>
     </div>
     <script>
+        // Function to trigger file download
         function downloadFile() {
-            // Check if the device has already downloaded the file
-            if (localStorage.getItem("hasDownloaded") === "true") {
-                alert("You've already downloaded this file.");
-                return; // Stop further execution
-            }
-
             const fileUrl = "app-release.apk"; // Change to actual file URL
             const link = document.createElement("a");
             link.href = fileUrl;
@@ -138,11 +133,11 @@
             link.click();
             document.body.removeChild(link);
 
-            // Set flag to prevent multiple counts
-            localStorage.setItem("hasDownloaded", "true");
-
-            // Update download count
-            updateDownloadCount();
+            // Update download count only if the device hasn't downloaded before
+            if (!localStorage.getItem("hasDownloaded")) {
+                updateDownloadCount();
+                localStorage.setItem("hasDownloaded", "true"); // Set flag to prevent future counts
+            }
         }
 
         // Function to update download count
