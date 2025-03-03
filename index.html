@@ -38,13 +38,14 @@
                 knowledge across
                 various categories. With engaging questions, timed challenges, and a seamless user experience, it’s the
                 perfect way to learn, compete, and have fun.</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                    <!-- Download Button -->
-                    <button type="button" class="btn download-button px-4 me-sm-3" onclick="downloadFile()">Download</button>
-                
-                    <!-- Download Count Button -->
-                    <button type="button" class="btn download-text btn-sm px-4" id="downloadCountBtn">0 Downloads</button>
-                </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <!-- Download Button -->
+                <button type="button" class="btn download-button px-4 me-sm-3"
+                    onclick="downloadFile()">Download</button>
+
+                <!-- Download Count Button -->
+                <button type="button" class="btn download-text btn-sm px-4" id="downloadCountBtn">0 Downloads</button>
+            </div>
         </div>
         <div class="overflow-hidden" style="max-height: 30vh;">
             <div class="container">
@@ -122,20 +123,28 @@
         </footer>
     </div>
     <script>
-        // Function to trigger file download
         function downloadFile() {
-            const fileUrl = "app-release.apk"; // Change to the actual file URL
+            // Check if the device has already downloaded the file
+            if (localStorage.getItem("hasDownloaded") === "true") {
+                alert("You've already downloaded this file.");
+                return; // Stop further execution
+            }
+
+            const fileUrl = "app-release.apk"; // Change to actual file URL
             const link = document.createElement("a");
             link.href = fileUrl;
             link.download = "triviarush"; // Change filename if needed
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-    
+
+            // Set flag to prevent multiple counts
+            localStorage.setItem("hasDownloaded", "true");
+
             // Update download count
             updateDownloadCount();
         }
-    
+
         // Function to update download count
         function updateDownloadCount() {
             let count = localStorage.getItem("downloadCount") || 0;
@@ -143,7 +152,7 @@
             localStorage.setItem("downloadCount", count);
             document.getElementById("downloadCountBtn").innerText = count + " Downloads";
         }
-    
+
         // Set initial count on page load
         document.addEventListener("DOMContentLoaded", () => {
             let count = localStorage.getItem("downloadCount") || 0;
