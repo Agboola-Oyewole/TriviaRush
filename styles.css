@@ -1,0 +1,84 @@
+body {
+    font-family: "Host Grotesk", serif;
+    background: linear-gradient(to bottom right, #1A3636, #6B8E74);
+}
+
+.feature-p {
+    color: white;
+}
+
+.feature-icon-small {
+    background-color: #D6BD98;
+    padding: 5px;
+    width: 20%;
+    text-align: center;
+}
+
+.banner-image {
+    display: block;
+    /* Remove extra spacing */
+    max-width: 100%;
+    /* Ensure responsiveness */
+    max-height: 50vh;
+    /* Constrain height */
+    object-fit: contain;
+    /* Ensure full image visibility */
+    margin: 0 auto;
+    /* Center horizontally */
+}
+
+.header-text {
+    /* color: #D6BD98; */
+    color: #D6BD98;
+}
+
+.download-button {
+    background-color: #D6BD98;
+    color: black;
+}
+
+.download-button:hover {
+    background-color: #D6BD98;
+    color: black;
+}
+
+.download-text:hover {
+    color: black;
+}
+
+.download-text {
+    color: white;
+}
+
+.description-text {
+    font-weight: 900;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .img-fluid {
+        height: 800;
+        width: 800;
+    }
+
+    .description-text {
+        font-weight: 900;
+        margin-top: 2rem;
+        font-size: 1rem;
+        color: white;
+    }
+
+    .banner-image {
+        display: block;
+        /* Remove extra spacing */
+        max-width: 100%;
+        /* Ensure responsiveness */
+        max-height: 50vh;
+        /* Constrain height */
+        object-fit: contain;
+        /* Ensure full image visibility */
+        margin: 0 auto;
+        /* Center horizontally */
+    }
+
+}
